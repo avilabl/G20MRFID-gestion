@@ -1,0 +1,317 @@
+<app-navbar></app-navbar>
+<body>
+    <div class="row justify-content-around text-center">
+    <div class="col-3 pt-5 ms-5">
+        <div class="row">
+            <div class="input-group">
+                <div class="form-outline col-10">
+                  <input type="search" id="form1" class="form-control" placeholder="Buscar..." [(ngModel)]="busqueda"/>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="buscar()">
+                  <i class="fas fa-search"></i>
+                </button>
+                <div *ngIf="alertaBusqueda"><h4><span class="badge bg-warning mt-2">Por favor ingrese una busqueda!!!</span></h4></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="texto mt-3 ms-2">Filtrar por:</p>
+        </div>
+
+        <div class="row mt-2 ms-2">
+            <div class="form-check form-check-inline col-2 mt-2 ms-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="usuario" checked [(ngModel)]="filtro">
+                <label class="form-check-label" for="inlineRadio1">Usuario</label>
+            </div>
+            <div class="form-check form-check-inline col-2 mt-2 ms-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="nombre" [(ngModel)]="filtro">
+                <label class="form-check-label" for="inlineRadio2">Nombre</label>
+            </div>
+            <div class="form-check form-check-inline col-2 mt-2 ms-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="apellido" [(ngModel)]="filtro">
+                <label class="form-check-label" for="inlineRadio3">Apellido</label>
+            </div>
+            <div class="form-check form-check-inline col-5 mt-2 ms-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="nombreGranja" [(ngModel)]="filtro">
+                <label class="form-check-label" for="inlineRadio4">Nombre Granja</label>
+            </div>
+            <div class="form-check form-check-inline col-3 mt-2 ms-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="localidad" [(ngModel)]="filtro">
+                <label class="form-check-label" for="inlineRadio5">Localidad</label>
+            </div>
+            <div class="form-check form-check-inline col-3 mt-2 ms-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="telefono" [(ngModel)]="filtro">
+                <label class="form-check-label" for="inlineRadio6">Telefono</label>
+            </div>
+            <div class="form-check form-check-inline col-3 mt-2 ms-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="eMail" [(ngModel)]="filtro">
+                <label class="form-check-label" for="inlineRadio7">E-Mail</label>
+            </div>
+            <div class="form-check form-check-inline col-3 mt-2 ms-2">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="todos" [(ngModel)]="filtro">
+              <label class="form-check-label" for="inlineRadio8">Todos</label>
+          </div>
+        </div>
+    
+        <div class="col-10 row ms-3 d-flex justify-content-center">
+            <div class="row col-12 mt-5 "><button type="button" class="btn nuevo-usuario btn-danger" data-bs-toggle="modal" 
+              data-bs-target="#modalEdit2">
+              Agregar usuario nuevo
+            </button>
+      </div>
+      
+    
+    </div>
+        </div>
+          
+        
+    
+    
+    <div  class="row col-8 mt-5">
+        <table *ngIf="usuariosDB[0].usuario != '' "class="table col-8">
+            <thead class="col-8 border border-dark">
+              <tr  class="encabezado border border-dark">
+                <th scope="col">Usuario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Nombre Granja</th>
+                <th scope="col">Localidad</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">E-mail</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="col-8 border border-dark">
+              <tr *ngFor="let TablaUsuario of tablaUsuario let i=index" class="tabla border border-dark" >
+                <th scope="row" style="vertical-align: middle;margin-top: 0px!important;margin-bottom: 0px!important;">{{TablaUsuario.usuario}}</th>
+                <td>{{TablaUsuario.nombre}}</td>
+                <td>{{TablaUsuario.apellido}}</td>
+                <td>{{TablaUsuario.nombreGranja}}</td>
+                <td>{{TablaUsuario.localidad}}</td>
+                <td>{{TablaUsuario.telefono}}</td>
+                <td>{{TablaUsuario.eMail}}</td>
+                <td><button type="button"  class="btn btn-edit" (click)="index(i)" data-bs-toggle="modal" 
+                  data-bs-target="#modalEdit"><i class="fas fa-pencil-alt"></i></button>
+                    <button type="button" (click)="eliminar(i)" class="btn btn-edit"><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="alertaNoEncontrado" class="alert alert-dark" role="alert">
+            No se han encontrado resultados
+          </div>
+    </div>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edicion De Datos De Usuario</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+                
+              <div class="mb-3">
+                  <label for="usuario" class="col-form-label">Usuario:</label>
+                  <input type="text" class="form-control campoModal" id="usuario" name="usuario" formControlName="usuario">
+                  <div *ngIf="alertaUsuarioRepetido"><h5><span class="badge bg-warning mt-2">Usuario no encontrado. Por favor ingrese un usuario que ya exista</span></h5></div>
+                  <div *ngIf="contactForm.get('usuario')?.touched && contactForm.get('usuario')?.errors?.['required']"
+                  class="alert alert-danger">Este campo es requerido </div>
+                  <div *ngIf="contactForm.get('usuario')?.touched && contactForm.get('usuario')?.errors?.['minlength']"
+                  class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                  <div *ngIf="contactForm.get('usuario')?.touched && contactForm.get('usuario')?.errors?.['maxlength']"
+                  class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="nombre" class="col-form-label">Nombre:</label>
+                    <input type="text" class="form-control campoModal" id="nombre" name="nombre" formControlName="nombre">
+                  <div *ngIf="contactForm.get('nombre')?.touched && contactForm.get('nombre')?.errors?.['minlength']"
+                  class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                  <div *ngIf="contactForm.get('nombre')?.touched && contactForm.get('nombre')?.errors?.['maxlength']"
+                  class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="apellido" class="col-form-label">Apellido:</label>
+                    <input type="text" class="form-control campoModal" id="apellido" name="apellido" formControlName="apellido">
+                    <div *ngIf="contactForm.get('apellido')?.touched && contactForm.get('apellido')?.errors?.['required']"
+                    class="alert alert-danger">Este campo es requerido </div>
+                    <div *ngIf="contactForm.get('apellido')?.touched && contactForm.get('apellido')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="contactForm.get('apellido')?.touched && contactForm.get('apellido')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="nombreGranja" class="col-form-label">Nombre De Granja:</label>
+                    <input type="text" class="form-control campoModal" id="nombreGranja" name="nombreGranja" formControlName="nombreGranja">
+                    <div *ngIf="contactForm.get('nombreGranja')?.touched && contactForm.get('nombreGranja')?.errors?.['required']"
+                    class="alert alert-danger">Este campo es requerido </div>
+                    <div *ngIf="contactForm.get('nombreGranja')?.touched && contactForm.get('nombreGranja')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="contactForm.get('nombreGranja')?.touched && contactForm.get('nombreGranja')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="localidad" class="col-form-label">Localidad:</label>
+                    <input type="text" class="form-control campoModal" id="localidad" name="localidad" formControlName="localidad">
+                    <div *ngIf="contactForm.get('localidad')?.touched && contactForm.get('localidad')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="contactForm.get('localidad')?.touched && contactForm.get('localidad')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="telefono" class="col-form-label">Telefono:</label>
+                    <input type="number" class="form-control campoModal" id="telefono" name="telefono" formControlName="telefono">
+                    <div *ngIf="contactForm.get('telefono')?.touched && contactForm.get('telefono')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="contactForm.get('telefono')?.touched && contactForm.get('telefono')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="eMail" class="col-form-label">E-mail:</label>
+                    <input type="text" class="form-control campoModal" id="eMail" name="eMail" formControlName="eMail">
+                    <div *ngIf="contactForm.get('eMail')?.touched && contactForm.get('eMail')?.errors?.['email']"
+                    class="alert alert-danger">Ingrese un e-mail valido </div>
+                    <div *ngIf="contactForm.get('eMail')?.touched && contactForm.get('eMail')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="contactForm.get('eMail')?.touched && contactForm.get('eMail')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+
+                  <div class="row ">
+                    <div class=" col-3 justify-content-end">
+                    <button type="submit" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                  <div class=" col-2 justify-content-end">
+                    <button type="submit" class="btn btn-danger btn-lg" [disabled]="contactForm.invalid">Actualizar</button>
+                  </div>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- modal para agregar usuario -->
+
+
+  <div class="modal fade" id="modalEdit2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel2">Datos De Nuevo Usuario</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="onSubmit2()" [formGroup]="newContactForm">
+                
+              <div class="mb-3">
+                  <label for="usuario" class="col-form-label">Usuario:</label>
+                  <input type="text" class="form-control campoModal" id="usuario" name="usuario" formControlName="usuario">
+                  <div *ngIf="alertaUsuarioExistente"><h5><span class="badge bg-warning mt-2">Usuario no encontrado. Por favor ingrese un usuario que ya exista</span></h5></div>
+                  <div *ngIf="newContactForm.get('usuario')?.touched && newContactForm.get('usuario')?.errors?.['required']"
+                  class="alert alert-danger">Este campo es requerido </div>
+                  <div *ngIf="newContactForm.get('usuario')?.touched && newContactForm.get('usuario')?.errors?.['minlength']"
+                  class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                  <div *ngIf="newContactForm.get('usuario')?.touched && newContactForm.get('usuario')?.errors?.['maxlength']"
+                  class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contrasenia" class="col-form-label">Contraseña:</label>
+                  <input type="text" class="form-control campoModal" id="contrasenia" name="contrasenia" formControlName="contrasenia">
+                  <div *ngIf="alertaUsuarioExistente"><h5><span class="badge bg-warning mt-2">Usuario no encontrado. Por favor ingrese un usuario que ya exista</span></h5></div>
+                  <div *ngIf="newContactForm.get('contrasenia')?.touched && newContactForm.get('contrasenia')?.errors?.['required']"
+                  class="alert alert-danger">Este campo es requerido </div>
+                  <div *ngIf="newContactForm.get('contrasenia')?.touched && newContactForm.get('contrasenia')?.errors?.['minlength']"
+                  class="alert alert-danger">Este campo debe tener mas de 8 caracteres</div>
+                  <div *ngIf="newContactForm.get('contrasenia')?.touched && newContactForm.get('contrasenia')?.errors?.['maxlength']"
+                  class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="nombre" class="col-form-label">Nombre:</label>
+                    <input type="text" class="form-control campoModal" id="nombre" name="nombre" formControlName="nombre">
+                  <div *ngIf="newContactForm.get('nombre')?.touched && newContactForm.get('nombre')?.errors?.['minlength']"
+                  class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                  <div *ngIf="newContactForm.get('nombre')?.touched && newContactForm.get('nombre')?.errors?.['maxlength']"
+                  class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="apellido" class="col-form-label">Apellido:</label>
+                    <input type="text" class="form-control campoModal" id="apellido" name="apellido" formControlName="apellido">
+                    <div *ngIf="newContactForm.get('apellido')?.touched && newContactForm.get('apellido')?.errors?.['required']"
+                    class="alert alert-danger">Este campo es requerido </div>
+                    <div *ngIf="newContactForm.get('apellido')?.touched && newContactForm.get('apellido')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="newContactForm.get('apellido')?.touched && newContactForm.get('apellido')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="nombreGranja" class="col-form-label">Nombre De Granja:</label>
+                    <input type="text" class="form-control campoModal" id="nombreGranja" name="nombreGranja" formControlName="nombreGranja">
+                    <div *ngIf="newContactForm.get('nombreGranja')?.touched && newContactForm.get('nombreGranja')?.errors?.['required']"
+                    class="alert alert-danger">Este campo es requerido </div>
+                    <div *ngIf="newContactForm.get('nombreGranja')?.touched && newContactForm.get('nombreGranja')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="newContactForm.get('nombreGranja')?.touched && newContactForm.get('nombreGranja')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="localidad" class="col-form-label">Localidad:</label>
+                    <input type="text" class="form-control campoModal" id="localidad" name="localidad" formControlName="localidad">
+                    <div *ngIf="newContactForm.get('localidad')?.touched && newContactForm.get('localidad')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="newContactForm.get('localidad')?.touched && newContactForm.get('localidad')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="telefono" class="col-form-label">Telefono:</label>
+                    <input type="number" class="form-control campoModal" id="telefono" name="telefono" formControlName="telefono">
+                    <div *ngIf="newContactForm.get('telefono')?.touched && newContactForm.get('telefono')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="newContactForm.get('telefono')?.touched && newContactForm.get('telefono')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="eMail" class="col-form-label">E-mail:</label>
+                    <input type="text" class="form-control campoModal" id="eMail" name="eMail" formControlName="eMail">
+                    <div *ngIf="newContactForm.get('eMail')?.touched && newContactForm.get('eMail')?.errors?.['email']"
+                    class="alert alert-danger">Ingrese un e-mail valido </div>
+                    <div *ngIf="newContactForm.get('eMail')?.touched && newContactForm.get('eMail')?.errors?.['minlength']"
+                    class="alert alert-danger">Este campo debe tener mas de 3 caracteres</div>
+                    <div *ngIf="newContactForm.get('eMail')?.touched && newContactForm.get('eMail')?.errors?.['maxlength']"
+                    class="alert alert-danger">Este campo menos de 15 caracteres</div>
+                  </div>
+
+                 <div class="row ">
+                    <div class=" col-3 justify-content-end">
+                    <button type="submit" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                  <div class=" col-2 justify-content-end">
+                    <button type="submit" class="btn btn-danger btn-lg" [disabled]="contactForm.invalid">Guardar Usuario</button>
+                  </div> 
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+
+

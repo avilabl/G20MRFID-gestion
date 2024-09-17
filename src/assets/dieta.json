@@ -1,0 +1,99 @@
+{
+    "caravanas": [{
+        "animales":"1",
+        "dias":[{
+            "dietasDiaria":[{"peso":2,"horario":8}],
+            "inicioDia":1
+        }],
+        "estacion":1,
+        "checked": false       
+    } , {
+        "animales":"2",
+        "dias":[{
+            "dietasDiaria":[{"peso":2,"horario":8},{"peso":2.5,"horario":10}],
+            "inicioDia":1
+        }],
+        "estacion":3,
+        "checked": false       
+    } , {
+        "animales":"3",
+        "dias":[{
+            "dietasDiaria":[{"peso":1,"horario":6}],
+            "inicioDia":1
+        }],
+        "estacion":2,
+        "checked": false       
+    } , {
+        "animales":"4",
+        "dias":[{
+            "dietasDiaria":[{"peso":0,"horario":12}],
+            "inicioDia":1
+        }],
+        "estacion":1,
+        "checked": false       
+    } , {
+        "animales":"5",
+        "dias":[{
+            "dietasDiaria":[{"peso":2,"horario":8}],
+            "inicioDia":1
+        }],
+        "estacion":2,
+        "checked": false       
+    } , {
+        "animales":"6",
+        "dias":[{
+            "dietasDiaria":[{"peso":1.2,"horario":14}],
+            "inicioDia":1
+        }],
+        "estacion":3,
+        "checked": false       
+    } , {
+        "animales":"7",
+        "dias":[{
+            "dietasDiaria":[{"peso":0,"horario":8}],
+            "inicioDia":1
+        }],
+        "estacion":1,
+        "checked": false       
+    } , {
+        "animales":"8",
+        "dias":[{
+            "dietasDiaria":[{"peso":3.4,"horario":22}],
+            "inicioDia":1
+        }],
+        "estacion":3,
+        "checked": false       
+    } , {
+        "animales":"9",
+        "dias":[{
+            "dietasDiaria":[{"peso":2.2,"horario":20}],
+            "inicioDia":1
+        }],
+        "estacion":2,
+        "checked": false       
+    } , {
+        "animales":"10",
+        "dias":[{
+            "dietasDiaria":[{"peso":1,"horario":16}],
+            "inicioDia":1
+        }],
+        "estacion":2,
+        "checked": false       
+    } , {
+        "animales":"21",
+        "dias":[{
+            "dietasDiaria":[{"peso":2,"horario":8}],
+            "inicioDia":1
+        }],
+        "estacion":3,
+        "checked": false       
+    } , {
+        "animales":"22",
+        "dias":[{
+            "dietasDiaria":[{"peso":0.5,"horario":4}],
+            "inicioDia":1
+        }],
+        "estacion":1,
+        "checked": false               
+    }]
+}

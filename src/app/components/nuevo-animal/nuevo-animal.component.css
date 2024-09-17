@@ -1,0 +1,64 @@
+.newCaravana{
+    text-align: center;
+    font-family: 'dosis' , 'sans-serif';
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 700; 
+}    
+    
+body{
+    background: #f5dcdcde;  /* fallback for old browsers */
+    background-image: url(../../../assets/fondoNewAnimal.png);
+    background-position-y: 200px;
+    /* background: -webkit-linear-gradient(to bottom, #615f5fd0, #d431259f);  /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to bottom, #615f5fd0, #d431259f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    background-position: center;
+    background-size:cover;
+    height: 900px;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    text-align: center;
+    border-color: #b41f15;
+    background-color: #b42015;
+    font-family: 'dosis' , 'sans-serif';
+    color: #f5f5dc;
+    font-size: 1.2rem;
+    font-weight: 700; 
+    
+}
+
+.btn-primary:hover{
+    background-color: #d46861;
+    border-color: #d46861;
+}
+
+.btn:active{
+    background-color: #615f5f7a;
+    border-color: #615f5f7a;
+}
+
+
+.form-check-input{
+    --bs-form-check-bg: #615f5f7a;
+    border: #b41f15;
+}
+
+.form-check-input:checked{
+    background-color:#b41f15;
+}
+
+.form-check-label{
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1rem;
+    width: 750;
+}
+
+.form-control:focus{
+    box-shadow: #b41f15;
+
+}

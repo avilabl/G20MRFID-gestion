@@ -1,0 +1,215 @@
+<app-navbar></app-navbar>
+  <body>
+    <div class="container p-4">
+      
+        <!-- */++++++++++++++ DESPLEGABLE PARA SELECCIONAR ESTACION +++++++++++++++++++/* -->
+      
+      <div class="row d-flex align-items-center justify-content-between">
+        <div class="col-5 d-flex align-items-center justify-content-center">
+          <label class="text-dia-inicio">N° de Estacion:</label>
+          <select class="form-select sel-est" aria-label="Default select example" [(ngModel)]='setEstacion' (change)="arrayMostrar()">
+            <option selected value="0">Estacion</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="col-7">
+          <label class="text-dia-inicio">Dia Inicio Ciclo:</label>
+          <input type='Date' class='calendario' [ngModel]='inicioCiclo' (ngModelChange)='inicioCiclo=$event' 
+                (change)="diaFinal(inicioCiclo)" [value]="inicioCiclo">
+          <label class="text-dia-inicio">Y Finaliza El Dia:</label>
+          <label class="text-dia-inicio">{{finCiclo | date:'dd-MM-yyyy'}}</label>
+        </div>
+      </div>
+
+        <!-- */++++++++++++++ BOTONERA CARGA DE DIETA +++++++++++++++++++/* -->
+      
+      <div class="row">
+        <div class="col-12 mt-4 d-flex justify-content-between">
+          <button type="button" class="btn btn-primary col-3 " (click) = "dietaDefault()">Dieta Predeterminada</button>
+          <button type="button" class="btn btn-primary col-3 ">Cargar Dieta</button>
+          <button type="button" class="btn btn-primary col-3 ">Guardar Dieta</button>
+        </div>
+      </div>
+
+        <!-- */++++++++++++++ SLECTOR DE CARAVANA A CARGAR +++++++++++++++++++/* -->
+      
+      <div class="row mt-4 ">
+        <div class="form-check form-switch col-3 d-flex justify-contents-center align-items-center" 
+              style="padding: 0%;" *ngFor="let caravana of mostrarCaravana let i=index">
+          <input *ngIf="mostrarCaravana[i].animales != 0" class="form-check-input" style="margin: 0;display: flex;" type="checkbox" role="switch" 
+                id="flexSwitchCheckDefault" (click)="cambioCheck(caravana.checked,i)" [checked]="caravana.checked">
+          <label *ngIf="mostrarCaravana[i].animales != 0" class="form-check-label caravana" for="flexSwitchCheckDefault">{{caravana.animales| number:'15.0-0'}}</label>
+        </div>
+      </div>
+      
+        <!-- */++++++++++++++ BOTONERA TODO NADA PARA LAS CARAVANAS SELECIONADAS +++++++++++++++++++/* -->
+        
+      <div class="row">
+        <div class="col-12 mt-4 d-flex justify-content-around">
+          <button type="button" class="btn btn-primary col-3 allNone" (click)="todos()">Todos</button>
+          <button type="button" class="btn btn-primary col-3 allNone" (click)="ninguno()">Ninguno</button>
+        </div>
+      </div>
+
+        <!-- */+++ CANTIDAD DE DOSIS-DOSIS-HORARIO Y DIA TODO EN LA MISMA FILA +++/* -->
+        <!-- */++++++++++++++ RADIO BOTON PARA SELECCIONAR CANTIDAD DE DOSIS +++++++++++++++++++/* -->
+        
+      <div class="row mt-4" *ngFor="let diaAUX of diasAUX let j=index">
+        <div class="row d-flex align-self-center">
+          <div class="col-3">
+            <span class="dia-dieta">Dia de Inicio de la Dieta:</span>
+          </div>
+          <div class="col-1">
+            <input type="number" [(ngModel)]="diasAUX[j].inicioDia" [min]="diasAUX[j].inicioDia + 1" max="114" [disabled]="inputDiaDieta">
+          </div>
+        </div>  
+        <div class="col-2 radios mt-4">
+          <div class="form-check col-3 radios">
+            <input class="form-check-input" (click)="largoArray(0,j)" type="radio" 
+                  name="cantDosis" id="cantDosis" value=0>
+            <p class="radios">Ninguna Dosis</p>
+          </div>
+          <div class="form-check col-3 radios">
+            <input class="form-check-input" (click)="largoArray(1,j)" type="radio" 
+                  name="cantDosis" id="cantDosis" value=1>
+            <p>1 Dosis</p>
+          </div>
+          <div class="form-check col-3 radios">
+            <input class="form-check-input" (click)="largoArray(2,j)" type="radio" 
+                  name="cantDosis" id="cantDosis" value=2>
+            <p>2 Dosis</p>
+          </div>
+          <div class="form-check col-3 radios">
+            <input class="form-check-input" (click)="largoArray(3,j)" type="radio" 
+                  name="cantDosis" id="cantDosis" value=3>
+            <p class="radios">3 Dosis</p>
+          </div>
+          <div class="form-check col-3 radios">
+            <input class="form-check-input" (click)="largoArray(4,j)" type="radio" 
+                  name="cantDosis" id="cantDosis" value=4>
+            <p class="radios">4 Dosis</p>
+          </div>
+          <div class="form-check col-3 radios">
+            <input class="form-check-input" (click)="largoArray(5,j)" type="radio" 
+                  name="cantDosis" id="cantDosis" value=5>
+            <p class="radios">5 Dosis</p>
+          </div>
+        </div>
+
+          <!-- */++++++++++++++ DOSIS +++++++++++++++++++/* -->
+            
+        <div class="col-7 mt-4 dosis"> 
+          <div class="d-flex align-items-center" *ngFor="let dieta of diasAUX[j].dietaDiaria let i=index">
+            <label for="customRange{{i}}" class="form-label me-2 ">Dosis {{i+1}}</label>
+            <input type="range" class="form-range" [(ngModel)]="diasAUX[j].dietaDiaria[i].peso" (change)="array(j,i)"  
+                  min="0" max="5" step="0.1" id="customRange{{i}}">
+            <span class="ms-2">{{diasAUX[j].dietaDiaria[i].peso}} Kg.</span>
+          </div>
+        </div>
+
+          <!-- */++++++++++++++ HORARIO +++++++++++++++++++/* -->
+
+        <div class="col-3 mt-3">
+          <div class="col-8 ms-4 me-4 d-flex justify-content-evenly" *ngFor="let hora of diasAUX[j].dietaDiaria let k=index">
+            <!-- <select class="form-select form-select-sm horario" type="time" aria-label=".form-select-sm example" 
+                  [(ngModel)]="diasAUX[j].dietaDiaria[k].horario">
+              <option selected>Horario Dosis {{k + 1}}</option>
+              <option value="0">00:00 hs.</option>
+              <option value="2">02:00 hs.</option>
+              <option value="4">04:00 hs.</option>
+              <option value="6">06:00 hs.</option>
+              <option value="8">08:00 hs.</option>
+              <option value="10">10:00 hs.</option>
+              <option value="12">12:00 hs.</option>
+              <option value="14">14:00 hs.</option>
+              <option value="16">16:00 hs.</option>
+              <option value="18">18:00 hs.</option>
+              <option value="20">20:00 hs.</option>
+              <option value="22">22:00 hs.</option> 
+            </select> -->
+            <label class="horario"> Horario {{k+1}}:</label>
+            <input type="number" name="hora" required="required" id="hora" [(ngModel)]="diasAUX[j].dietaDiaria[k].horario" (change)="cambioHorario(j,k)" min={{valor}} max="23" value="0" step="2">
+          </div>
+        </div>
+
+          <!-- */++++++++++++++ BOTON NUEVA NUEVO DIA DE DOSIS +++++++++++++++++++/* -->
+             
+        <div class="row d-flex"  style="justify-content: center;">
+          <div class="col-2 mt-3 d-flex">
+            <a *ngIf="diasAUX.length == j+1" class="btn btn-primary sumar-dieta"  role="button" 
+                  (click)="largoArrayDiaDieta(j)">
+                  <img src="../../../assets/mas.png"
+                        height="25px" width="31px">
+              <!-- <i class="fas fa-plus fa-2x" style="color: #f5f5dc;"></i> -->
+            </a>
+          </div>
+              <!-- */++++++++++++++ BOTON NUEVA NUEVO DIA DE DOSIS +++++++++++++++++++/* -->
+          <div class="col-2 mt-3 d-flex">
+            <a *ngIf="diasAUX.length == j+1" class="btn btn-primary sumar-dieta"  role="button" 
+                  (click)="restaArrayDiaDieta(j)">
+                  <img src="../../../assets/menos.png"
+                        height="25px" width="31px">
+                  <!-- <i class="fas fa-minus fa-2x" style="color: #f5f5dc;"></i> -->
+            </a>
+          </div>
+        </div>   
+      </div>
+
+          <!-- */++++++++++++++ BOTON PARA GUARDAR DATOS +++++++++++++++++++/* -->
+      
+      <div class="row d-flex"  style="justify-content: center;">
+            <div class="col-10 mt-3 d-flex">
+              <button type="button" class="btn btn-primary col-10" (click)="validarDatos()" >Guardar Datos</button>
+            </div>
+              
+              <div *ngIf="validar[0]" class= "mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!!!</strong> Por Favor seleccione una estacion
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              
+              <div *ngIf="validar[1]" class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!!!</strong> Por Favor seleccione un dia de inicio de ciclo despues del {{minFecha | date:'dd-MM-yyyy' }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              
+              <div *ngIf="validar[2]" class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!!!</strong> Por Favor seleccione al menos un numero de caravana 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              
+              <div *ngIf="validar[3]" class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!!!</strong> Por Favor revise los dias de inicio de dieta.Recuerde que deben estar en orden ascendente o ser coincidentes
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div *ngIf="validar[4]" class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!!!</strong> Por Favor revise las cantidad de dosis.Recuerde que no puede haber ninguna dosis
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div *ngIf="validar[5]" class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!!!</strong> Por Favor revise los pesos de las dosis.Recuerde que no puede quedar en cero
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+
+              <div *ngIf="validar[6]" class="mt-2 alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR!!!</strong> Por Favor los horarios de las dosis.Recuerde que deben estar en orden ascendente o ser coincidentes
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              
+
+          </div>
+          <div class="col-10 mt-3 d-flex">
+            <button type="button" class="btn btn-primary col-10" (click)="verDatos()" >ver datos</button>
+          </div>
+
+
+<a href="../../../assets/agregarAnimal.png"
+class="btn btn-default"
+target="_blank"
+download="agregarAnimal.png"
+>Download Now</a>
+    </div>
+  </body>

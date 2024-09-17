@@ -1,0 +1,63 @@
+body{
+    background: #f5f5dc;  /* fallback for old browsers */
+    background-image: url(../../../assets/cara-cerdito.png);
+/* background: -webkit-linear-gradient(to bottom, #615f5fd0, #d431259f);  /* Chrome 10-25, Safari 5.1-6 */
+/*background: linear-gradient(to bottom, #615f5fd0, #d431259f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+background-position: center;
+background-size:cover;
+height: auto;
+}
+
+
+/* .btnTransf{
+
+    background: url(../../../assets/cogs-solid.png);
+    background-size:auto
+
+} */
+
+.btn{
+
+    margin-left: 2rem;
+    --bs-btn-border-width: 2px;
+    --bs-btn-border-color: #b41f15;
+    --bs-btn-padding-y: 1rem;
+    --bs-btn-padding-x: 3rem; 
+    --bs-btn-font-size: .70rem;
+    
+}
+
+.btn-outline-primary{
+    --bs-btn-hover-bg: #615f5f7a;
+    --bs-btn-hover-border-color: #b41f15;
+    width: 340px;
+}
+
+.textBoton{
+    font-family: 'dosis' , 'sans-serif';
+    color: #615f5fd0;
+    font-size: 1.5rem;
+    font-weight: 750;    
+}
+
+.backFooter{
+    background: #615f5fd0;
+}
+
+.newsletter{
+    color: #f5f5dc;
+    font-family: 'dosis' , 'sans-serif';
+    text-decoration: underline;
+}
+
+.titulo{
+    color: #f5f5dc;
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1.2rem;
+    text-decoration: underline;
+    font-weight: 900;
+}
+
+.text-secondary{
+    color: #b41f15;
+}

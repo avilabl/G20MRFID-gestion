@@ -1,0 +1,260 @@
+
+    body{
+        background: #f5f5dc;  /* fallback for old browsers */
+        background-image: url(../../../assets/fondoGestion.png);
+        /* background: -webkit-linear-gradient(to bottom, #615f5fd0, #d431259f);  /* Chrome 10-25, Safari 5.1-6 */
+        /*background: linear-gradient(to bottom, #615f5fd0, #d431259f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+        background-position: center;
+        background-size:cover;
+        height:900px;
+    }
+
+    .text-dia-inicio{
+      font-family: 'dosis' , 'sans-serif';
+      font-size: 1.1rem;
+      font-weight: 700; 
+      color:#000000;
+      margin-right: 5px;
+    }
+
+    .sel-est{
+      max-width: 120px;
+
+    }
+
+    .sumar-dieta{
+      display: flex;
+      height: 60px;
+      width: 60px;
+      align-items: center;
+      justify-content: center;
+      background: #b41f15;
+      border-bottom-right-radius: 26px;
+      border-top-left-radius: 26px;
+    }
+
+    .dia-dieta{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'dosis' , 'sans-serif';
+      font-size: 1.2rem;
+      font-weight: 700; 
+      color:#000000;
+      margin-top: 0.6rem;
+    }
+
+    .calendario{
+      font-family: 'dosis' , 'sans-serif';
+      font-size: 1.1rem;
+      font-weight: 700; 
+      color:#000000;
+      margin-right: 5px;
+    }
+
+    .form-select{
+        font-family: 'dosis' , 'sans-serif';
+        --bs-form-select-indicator-color: #f5f5dc;
+        background-color: #b41f15;
+        border-color: transparent;
+        border: 0px;
+        color:#f5f5dc;
+        --bs-dropdown-link-color: #f5f5dc;        
+    }
+
+    .form-select:active{
+      border-color: transparent;
+      background-color: #817d7d70;
+      border: 0px;
+      color: #b41f15;
+  }
+
+  .form-select:focus{
+    border-color: #817d7d70;
+  }
+
+    .btn{
+        text-align: center;
+        border-color: #b41f15;
+        background-color: #b42015;
+        font-family: 'dosis' , 'sans-serif';
+        color: #f5f5dc;
+        font-size: 1.2rem;
+        font-weight: 700; 
+        
+    }
+
+    .btn-primary:hover{
+        background-color: #d46861;
+        border-color: #d46861;
+    }
+
+    .btn:active{
+        background-color: #615f5f7a;
+        border-color: #615f5f7a;
+    }
+
+
+    .form-check-input{
+        --bs-form-check-bg: #615f5f7a;
+        border: #b41f15;
+    }
+
+    .form-check-input:checked{
+        background-color:#b41f15;
+    }
+
+    .form-check-label{
+        font-family: 'dosis' , 'sans-serif';
+        font-size: 1rem;
+        width: 750;
+    }
+
+    .caravana{
+      display: flex;
+      max-height: 24px;
+      min-width: 150px;
+      padding-left: 5px;
+
+    }
+
+    .allNone{
+        --bs-btn-padding-x: 0.1rem;
+        --bs-btn-padding-y: 0.1rem;
+    }
+    .form-range{
+        width: 80%;
+    }
+
+    .radio{
+        display: flex;
+        padding-right: 0% !important;
+        
+        text-align: center;
+    }
+
+    p{
+        max-height: 15px;
+        min-width: 100px;
+        font-family: 'dosis' , 'sans-serif';
+        font-size: 1rem;
+        width: 750;
+    }
+
+
+
+     .horario{
+      font-family: 'dosis' , 'sans-serif';
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-right: 5px;
+      margin-top: 11px;
+      max-height: 25px;
+      font-size: 0,75rem!important;
+
+    } 
+
+    input[type="number"]{
+      text-align: center;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-top: 0.6rem;
+      max-height: 25px;  
+      font-family: 'dosis' , 'sans-serif';
+      font-size: 0,75rem!important;
+      color: #f5f5dc ;
+      background-color: #b41f15;
+      border: #b41f15;
+      border-radius: 7px;
+    }
+    
+/*     input[type="number"]::-webkit-inner-spin-button { 
+      -webkit-appearance: none;
+      cursor:pointer;
+      text-align:center;
+      position:relative;
+  } */
+  
+/*   input[type="number"]::-webkit-calendar-picker-indicator {
+    display:none;
+  }  */
+
+    .dosis{
+        font-family: 'dosis' , 'sans-serif';
+        font-size: 1rem;
+        width: 750;
+    }
+    
+    /* codigo cambio color slider inicio */
+
+    input[type='range'] {
+        display: block;
+        width: 80%;
+      }
+      
+      input[type='range']:focus {
+        outline: none;
+      }
+      
+      input[type='range'],
+      input[type='range']::-webkit-slider-runnable-track,
+      input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+      }
+      
+      input[type=range]::-webkit-slider-thumb {
+        background-color: #f5f5dc;
+        width: 17px;
+        height: 17px;
+        border: 5px solid #b41f15;
+        border-radius: 50%;
+        margin-top: -9px;
+      }
+      
+      input[type=range]::-moz-range-thumb {
+        background-color: #f5f5dc;
+        width: 15px;
+        height: 15px;
+        border: 3px solid #b41f15;
+        border-radius: 50%;
+      }
+      
+      input[type=range]::-ms-thumb {
+        background-color: #f5f5dc;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #b41f15;
+        border-radius: 50%;
+      }
+      
+      input[type=range]::-webkit-slider-runnable-track {
+        background-color: #817d7d70;;
+        height: 3px;
+      }
+      
+      input[type=range]:focus::-webkit-slider-runnable-track {
+        outline: none;
+      }
+      
+      input[type=range]::-moz-range-track {
+        background-color: #817d7d70;;
+        height: 3px;
+      }
+      
+      input[type=range]::-ms-track {
+        background-color: #817d7d70;;
+        height: 3px;
+      }
+      
+      input[type=range]::-ms-fill-lower {
+        background-color: HotPink
+      }
+      
+      input[type=range]::-ms-fill-upper {
+        background-color: black;
+      } 
+
+      /* codigo cambio color slider fin */
+

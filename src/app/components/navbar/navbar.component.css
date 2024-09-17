@@ -1,0 +1,32 @@
+.textoNav{
+    font-family: 'Dosis';
+    font-size: 1.2rem;
+    width: 400;
+    color: #f5f5dc !important;
+}
+
+.textoNav:hover{
+    cursor: pointer;
+    background-color: #505050;
+    
+}
+
+.textoNavDer{
+    font-family: 'Dosis';
+    font-size: 2rem;
+    width: 350;
+    color: #f5f5dc !important;
+    
+}
+
+.menuDrop{
+    background-color: #817d7d70;
+    border-color: transparent;
+    border: 0px;
+    --bs-dropdown-link-color: #b41f15;
+}
+.menuDrop:hover{
+    border-color: transparent;
+    background-color: #817d7d70;
+    border: 0px;
+}

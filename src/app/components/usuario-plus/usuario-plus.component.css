@@ -1,0 +1,126 @@
+.btn-primary{
+    background: #b41f15;
+    border: #b41f15;
+}
+
+.btn-primary:hover{
+    background: #615f5f7a;
+    border-color: #615f5f7a;
+}
+
+.btn-primary:active{
+    background: #eeb5b1;
+    border-color: #eeb5b1;
+}
+
+.form-control{
+    background: #eeb5b1;
+    border-color: #eeb5b1;
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1.2rem;
+    font-weight: 700; 
+}
+
+.form-check-label{
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1rem;
+    font-weight: 700; 
+}
+
+.texto{
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0px; 
+}
+
+.form-check-input{
+    --bs-form-check-bg: #615f5f7a;
+}
+
+.form-check-input:checked{
+    background-color: #b41f15;
+    border-color: #b41f15;
+}
+
+body{
+
+    background-color:#e0e0b8;
+    background-position: center;
+    background-size:cover;
+    height:900px;
+}
+
+.encabezado{
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0px; 
+    align-items: center;
+}
+
+.tabla{
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0px; 
+    align-content: center;
+}
+
+td{
+    vertical-align: middle;
+    margin-top: 0px!important;
+    margin-bottom: 0px!important;
+}
+
+tr:hover{
+    background-color: #f39fa6;
+}
+
+.btn-edit{
+    color: #d84f45;
+}
+
+.btn-edit:hover{
+    color:aliceblue;
+    background-color: #d84f45 ;
+}
+
+.btn-edit:active{
+    color:rgb(0, 0, 0);
+    background-color: aliceblue ;
+}
+
+.modal-content{
+    background-color: #eec4c7;
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0px; 
+}
+
+.campoModal{
+    background-color: aliceblue ;
+}
+
+.alert{
+    height: 55px;
+}
+
+.nuevo-usuario{
+    background: #b41f15;
+    font-family: 'dosis' , 'sans-serif';
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0px; 
+}
+
+.nuevo-usuario:hover{
+    background: #615f5f7a;
+    border-color: #615f5f7a;
+}
+
+.nuevo-usuario:active{
+    background: #eeb5b1;
+    border-color: #eeb5b1;
+}

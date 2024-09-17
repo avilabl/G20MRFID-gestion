@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<body>
+    <div class="container p-5">
+        
+        <div class="col-3">
+            <select class="form-select" aria-label="Default select example" [(ngModel)]='estAnimal' (change)="arrayMostrarCaravana()">
+                <option selected value="0">seleccione estacion</option>
+                <option value= "1" >1</option>
+                <option value= "2" >2</option>
+                <option value= "3" >3</option>
+                <option value= "4" >Todas las estaciones</option>
+            </select>
+        </div>
+        
+        <div class="row d-flex justify-content-between">
+            <div class="col-3 mt-5 ">
+                <div class="row">
+                    <div class="form-group mb-3 newCaravana">
+                        <label for="newAnimal">N° de caravana:</label>
+                        <input name="nAnimal" class="form-control mt-3" type="number" [(ngModel)]='nAnimal' (change)="reinicioValidacion()" aria-label="">
+                    </div>
+                </div>
+                <div class="row">
+                    <button style="width: 100%;" class="btn btn-primary btn-block" (click)="agregarAnimal()">Agregar Animal</button>
+                </div>
+            </div>
+            <div class="col-8 mt-5">
+                <div class="row" style="height: max-content;">
+                    <div *ngFor="let caravana of mostrarCaravana;let i=index" class="form-check form-check-inline col-3 text-center">
+                        <input *ngIf="mostrarCaravana[i].estacion == estAnimal || estAnimal==4" class="form-check-input" type="checkbox" id="inlineCheckbox1" [(ngModel)]="mostrarCaravana[i].checked" value="option1">
+                        <label *ngIf="mostrarCaravana[i].estacion == estAnimal || estAnimal==4" class="form-check-label" for="inlineCheckbox1">{{mostrarCaravana[i].animales}}</label>
+                    </div>
+                <div class="row d-flex align-items-end">
+                    <button style="width: 100%;" class="btn btn-primary btn-block" (click)="eliminarAnimales()">Eliminar Animales</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mt-5">
+        <div *ngIf="valCaravana" class="row">
+            <div class="alert alert-danger" role="alert">
+                El numero de caravana ya se encuentra ingresado en la estacion {{valCaravanaNRO}} 
+            </div>
+        </div>
+        <div *ngIf="valEstacion" class="row">
+            <div class="alert alert-danger" role="alert">
+                Por favor ingrese un numero de estacion para asignarle al numero de caravana
+            </div>
+        </div>
+        <div *ngIf="valCaravana0" class="row">
+            <div class="alert alert-danger" role="alert">
+                El numero de caravana no puede ser "0"
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
